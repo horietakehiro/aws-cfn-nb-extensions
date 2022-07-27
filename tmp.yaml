@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: ---
+
+Parameters: 
+  NameParam:
+    Type: AWS::SSM::Parameter::Name
+    Description: name param
+  ValueParam:
+    Type: AWS::SSM::Parameter::Value<String>
+    Description: value param
+
+  SsmKeyNameParam:
+    Description: AWS::SSM::Parameter::Value<AWS::EC2::KeyPair::KeyName>
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::KeyPair::KeyName>
+  SsmAzListParam:
+    Description: ger
+    Type: AWS::SSM::Parameter::Value<List<AWS::EC2::AvailabilityZone::Name>>
+
+  SsmListAzListParam:
+    Description: AWS::SSM::Parameter::Value<List<List<AWS::EC2::AvailabilityZone::Name>>>
+    Type: AWS::SSM::Parameter::Value<List<List<AWS::EC2::AvailabilityZone::Name>>>
+
+Resources:
+  s3Bucket:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: Private
+      BucketName: hogefugahoohgrhoahrfff
+
+
+Outputs:
+  NameOutput:
+    Description: name output
+    Value: !Ref NameParam
+  ValueOutput:
+    Description: value output
+    Value: !Ref ValueParam
+  SsmKeyNameParam:
+    Description: ssm key name
+    Value: !Ref SsmKeyNameParam
+
+  SsmAzListParam:
+    Description: SsmAzListParam
+    Value: !Join [ "-", !Ref SsmAzListParam ]
